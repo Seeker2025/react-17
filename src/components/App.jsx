@@ -18,7 +18,7 @@ export class App extends Component{
           return (
                 <div>
                 
-                  <Search/>
+                  <Search handleSearch = {this.handleSearch}/>
                   
                   <ContentInfo searchText={this.state.searchText}/>
 

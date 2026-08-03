@@ -1,5 +1,5 @@
 import { Component } from "react";
-import css from './Search.module.css';
+// import css from './Search.module.css';
 
 export class Search extends Component{
 
@@ -14,6 +14,7 @@ export class Search extends Component{
     handleSubmit = (e) => {
         e.preventDefault()
         console.log(this.state);
+        this.props.handleSearch(this.state.value)
     }
 
     render(){
