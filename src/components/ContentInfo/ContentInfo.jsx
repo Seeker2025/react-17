@@ -5,7 +5,7 @@ import { ErrorCard } from '../ErrorCard/ErrorCard';
 export class ContentInfo extends Component {
     state ={
         news: null,
-        isLoading: false,
+        // isLoading: false,
         error: '',
         status: 'idle'
     }
@@ -20,6 +20,8 @@ export class ContentInfo extends Component {
             getNews(this.props.searchText)
                 .then((response)  => response.json())
                 .then((data) => {
+                    console.log(data);
+                    
                     if(data.status === 'ok')
                         this.setState({ news: data.articles, status: 'resolved' })
                     else return Promise.reject(data.message)
@@ -37,7 +39,7 @@ export class ContentInfo extends Component {
     }
         render(){
            
-            const { news } = this.state
+            const { news, error } = this.state
             if(this.state.status === 'pending')
                 return (
                <div className="spinner-border" role="status">
@@ -56,7 +58,7 @@ export class ContentInfo extends Component {
                     </ul>
             )
             else if(this.state.status === 'rejected')
-                return <ErrorCard>{this.state.error}</ErrorCard>
+                return <ErrorCard>{error}</ErrorCard>
             
             
           
