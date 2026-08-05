@@ -27,10 +27,9 @@ export class ContentInfo extends Component {
                     else return Promise.reject(data.message)
                 })
                 .catch((error)=>{
-                    
-                    this.setState({ error, status: 'rejected' })
-                 
-                    
+                    console.log('error :>>', error);
+                    this.setState({ error: error.message || error,
+                         status: 'rejected' })
                 })
                 // .finally(()=>{
                 //     this.setState({ isLoading: false })
